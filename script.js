@@ -22,9 +22,22 @@ const highlightInfo = document.querySelector('.highlight__info');
 const buttonTheme = document.querySelector('.btn-theme');
 buttonTheme.style.cursor = 'pointer'
 
-let darkMode = false
-buttonTheme.addEventListener('click', function () {
-    if (darkMode === false) {
+let temaInicial = localStorage.getItem('tema');
+let darkMode = temaInicial === 'dark' ? true: false;
+changeTheme();
+buttonTheme.addEventListener('click', () => {
+    if (darkMode) {
+        darkMode = false;
+        changeTheme();
+    }
+    else {
+        darkMode = true;
+        changeTheme();
+    } 
+});
+
+function changeTheme(){
+    if (darkMode) {
         buttonTheme.src = './assets/dark-mode.svg'
         anterior.src = './assets/seta-esquerda-branca.svg'
         proximo.src = './assets/seta-direita-branca.svg'
@@ -36,7 +49,7 @@ buttonTheme.addEventListener('click', function () {
         input.style.color = '#FFF'
         highlightInfo.style.backgroundColor = '#454545'
         highlightInfo.style.boxShadow = '0px 4px 8px rgba(255, 255, 255, 0.15)'
-        darkMode = true;
+        localStorage.setItem('tema', temaInicial = 'dark');
 
     } else {
         buttonTheme.src = './assets/light-mode.svg'
@@ -50,9 +63,9 @@ buttonTheme.addEventListener('click', function () {
         input.style.color = '#000'
         highlightInfo.style.backgroundColor = '#FFF'
         highlightInfo.style.boxShadow = '0px 4px 8px rgba(0, 0, 0, 0.15)'
-        darkMode = false;
+        localStorage.setItem('tema', temaInicial = 'light');
     }
-})
+}
 
 
 function popularGaleria() {

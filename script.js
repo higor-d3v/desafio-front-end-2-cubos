@@ -300,7 +300,7 @@ promise.then(function (resposta) {
         highlightVideo.style.backgroundImage = `url(${body.backdrop_path})`
         highlightTitle.innerHTML = body.title
         highlightRating.innerHTML = body.vote_average
-        highlightGenres.innerHTML = `${body.genres[0].name}, ${body.genres[1].name}, ${body.genres[2].name}, ${body.genres[3].name}`
+        highlightGenres.innerHTML = `${body.genres[0].name}, ${body.genres[1].name}, ${body.genres[2].name}`
         const mes = body.release_date.slice(5, 7)
         const mesFinal = mesDeLancamento(mes)
         const dia = body.release_date.slice(8, 10)
